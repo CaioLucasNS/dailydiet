@@ -19,6 +19,16 @@ export default {
     GREEN_LIGHT: "#E5F0DB",
   },
 
-  FONT_FAMILY: {},
-  FONT_SIZE: {},
+  FONT_FAMILY: {
+    REGULAR: "NunitoSans_400Regular",
+    BOLD: "NunitoSans_700Bold",
+  },
+  FONT_SIZE: {
+    XS: 12,
+    SM: 14,
+    MD: 16,
+    LG: 18,
+    XL: 24,
+    XXL: 36,
+  },
 };
