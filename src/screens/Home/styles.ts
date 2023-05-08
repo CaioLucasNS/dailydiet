@@ -3,16 +3,16 @@ import styled, { css } from "styled-components/native";
 
 export const Container = styled(SafeAreaView)`
   flex: 1;
-  justify-content: space-between;
-  align-items: center;
+  /* justify-content: space-between; */
+  /* align-items: center; */
   padding-horizontal: 24px;
   background-color: ${({ theme }) => theme.COLORS.GRAY_7};
 `;
 
-export const Title = styled.Text`
+export const MealTitle = styled.Text`
   ${({ theme }) => css`
     color: ${theme.COLORS.GRAY_1};
-    font-size: ${theme.FONT_SIZE.XXL}px;
-    font-family: ${theme.FONT_FAMILY.BOLD};
+    font-size: ${theme.FONT_SIZE.MD}px;
+    font-family: ${theme.FONT_FAMILY.REGULAR};
   `}
 `;

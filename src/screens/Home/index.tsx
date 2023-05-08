@@ -1,6 +1,6 @@
 import { DietPercentageCard } from "@components/DietPercentageCard";
 import { Header } from "@components/Header";
-import { Container, Title } from "./styles";
+import { Container, MealTitle } from "./styles";
 
 export function Home() {
   return (
@@ -9,7 +9,7 @@ export function Home() {
 
       <DietPercentageCard percentage={90.86} />
 
-      <Title>Home Screen</Title>
+      <MealTitle>Refeições</MealTitle>
     </Container>
   );
 }

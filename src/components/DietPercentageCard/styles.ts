@@ -8,7 +8,6 @@ export type PercentageStyleProps = {
 };
 
 export const Container = styled(TouchableOpacity)<PercentageStyleProps>`
-  flex: 1;
   align-items: center;
   justify-content: center;
 
@@ -25,7 +24,7 @@ export const Container = styled(TouchableOpacity)<PercentageStyleProps>`
   min-height: 102px;
   width: 100%;
 
-  bottom: 40px;
+  margin-bottom: 40px;
 `;
 
 export const RedirectArrow = styled(ArrowUpRight).attrs(({ theme }) => ({
