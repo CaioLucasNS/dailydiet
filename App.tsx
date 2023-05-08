@@ -1,4 +1,4 @@
-import { ActivityIndicator, StatusBar } from "react-native";
+import { ActivityIndicator, StatusBar, View } from "react-native";
 import {
   useFonts,
   NunitoSans_400Regular,
@@ -9,6 +9,7 @@ import { ThemeProvider } from "styled-components/native";
 import { Home } from "@screens/Home";
 
 import theme from "@theme/index";
+import { Loading } from "@components/Loading";
 
 export default function App() {
   const [fontsLoaded] = useFonts({ NunitoSans_400Regular, NunitoSans_700Bold });
@@ -19,8 +20,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-
-      {fontsLoaded ? <Home /> : <ActivityIndicator />}
+      {fontsLoaded ? <Home /> : <Loading />}
     </ThemeProvider>
   );
 }
