@@ -1,3 +1,4 @@
+import { Button } from "@components/Button";
 import { DietPercentageCard } from "@components/DietPercentageCard";
 import { Header } from "@components/Header";
 import { Container, MealTitle } from "./styles";
@@ -7,9 +8,10 @@ export function Home() {
     <Container>
       <Header />
 
-      <DietPercentageCard percentage={90.86} />
+      <DietPercentageCard percentage={90.86} onPress={() => {}} />
 
       <MealTitle>Refeições</MealTitle>
+      <Button title="Nova refeição" icon="add" onPress={() => {}} />
     </Container>
   );
 }

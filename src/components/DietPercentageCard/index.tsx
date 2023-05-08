@@ -8,15 +8,23 @@ import {
   RedirectArrow,
 } from "./styles";
 
-type Props = TouchableOpacityProps & PercentageStyleProps;
+type Props = TouchableOpacityProps &
+  PercentageStyleProps & {
+    onPress: () => void;
+  };
 
-export function DietPercentageCard({ percentage, ...rest }: Props) {
+export function DietPercentageCard({ percentage, onPress, ...rest }: Props) {
   const { COLORS } = useTheme();
 
   const percentageFormatt = percentage.toString().replace(".", ",");
 
   return (
-    <Container activeOpacity={0.4} percentage={percentage} {...rest}>
+    <Container
+      activeOpacity={0.4}
+      percentage={percentage}
+      onPress={onPress}
+      {...rest}
+    >
       <RedirectArrow
         color={percentage > 50 ? COLORS.GREEN_DARK : COLORS.RED_DARK}
       />
