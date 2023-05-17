@@ -12,7 +12,7 @@ export const ListItemTitle = styled.Text`
     font-family: ${theme.FONT_FAMILY.BOLD};
   `}
 
-  margin-top: 10px
+  margin-top: 10px;
 `;
 
 export const ListItemContainer = styled.View`

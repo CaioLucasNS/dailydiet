@@ -48,7 +48,7 @@ const mockData: MealProps = [
 
 export function MealList() {
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <SectionList
         sections={mockData}
         keyExtractor={(item, index) => `${item}${index}`}
@@ -67,6 +67,7 @@ export function MealList() {
         ItemSeparatorComponent={() => <View style={{ height: 6 }} />}
         SectionSeparatorComponent={() => <View style={{ height: 10 }} />}
         showsVerticalScrollIndicator={false}
+        ListFooterComponent={() => <View style={{ marginBottom: 60 }} />}
       />
     </View>
   );
