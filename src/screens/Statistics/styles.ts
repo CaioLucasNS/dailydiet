@@ -6,6 +6,10 @@ import { PercentageStyleProps } from "@components/DietPercentageCard/styles";
 import styled, { css } from "styled-components/native";
 import { View } from "react-native";
 
+type SmallCardProps = {
+  isOffTheDiet?: boolean;
+};
+
 export const Container = styled.View`
   flex: 1;
 `;
@@ -90,11 +94,7 @@ export const LargeCard = styled.View`
   margin-bottom: 12px;
 `;
 
-type Props = {
-  isOffTheDiet?: boolean;
-};
-
-export const SmallCard = styled(View)<Props>`
+export const SmallCard = styled(View)<SmallCardProps>`
   background: ${({ theme, isOffTheDiet }) =>
     isOffTheDiet ? theme.COLORS.RED_LIGHT : theme.COLORS.GREEN_LIGHT};
 

@@ -4,8 +4,6 @@ import { LargeCardComponent } from "./LargeCardComponent";
 import { SmallCardComponent } from "./SmallCardComponent";
 
 import {
-  CardDescription,
-  CardNumber,
   CardsContainer,
   Container,
   Content,
@@ -15,7 +13,6 @@ import {
   GoBackArrowContainer,
   Header,
   PercentageText,
-  SmallCard,
 } from "./styles";
 
 type RouteParams = {
