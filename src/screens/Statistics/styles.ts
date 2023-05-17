@@ -99,7 +99,7 @@ export const SmallCard = styled(View)<Props>`
     isOffTheDiet ? theme.COLORS.RED_LIGHT : theme.COLORS.GREEN_LIGHT};
 
   width: 48%;
-  padding: 16px;
+  padding: 16px 30px;
   border-radius: 8px;
   gap: 8px
 
