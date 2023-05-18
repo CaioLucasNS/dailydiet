@@ -5,6 +5,7 @@ export declare global {
       Statistics: {
         percentage: number;
       };
+      NewMeal: undefined;
     }
   }
 }

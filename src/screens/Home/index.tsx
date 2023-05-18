@@ -27,7 +27,7 @@ export function Home() {
       <Button
         title="Nova refeição"
         icon="add"
-        onPress={() => {}}
+        onPress={() => navigation.navigate("NewMeal")}
         style={{ marginBottom: 32 }}
       />
 
