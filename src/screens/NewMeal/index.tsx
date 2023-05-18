@@ -1,7 +1,6 @@
 import { Button } from "@components/Button";
 import { DateInput } from "@components/DateInput";
 import { InputComponent } from "@components/InputComponent";
-import { ValidateDietButton } from "@components/ValidateDietButton";
 
 import { Container, DateHourContainer, QuestionText } from "./styles";
 
