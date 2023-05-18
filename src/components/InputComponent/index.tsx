@@ -21,7 +21,7 @@ export function InputComponent({
         ref={inputRef}
         isTextArea={isTextArea}
         multiline={isTextArea}
-        numberOfLines={4}
+        numberOfLines={isTextArea ? 4 : undefined}
         {...rest}
       />
     </Container>
