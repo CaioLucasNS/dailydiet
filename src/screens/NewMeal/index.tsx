@@ -1,8 +1,9 @@
 import { Button } from "@components/Button";
+import { CheckDietButton } from "@components/CheckDietButton";
 import { DateInput } from "@components/DateInput";
 import { InputComponent } from "@components/InputComponent";
 
-import { Container, DateHourContainer, QuestionText } from "./styles";
+import { Container, RowContainer, QuestionText } from "./styles";
 
 export function NewMeal() {
   return (
@@ -11,12 +12,17 @@ export function NewMeal() {
         <InputComponent title="Nome" />
         <InputComponent title="Descrição" isTextArea />
 
-        <DateHourContainer>
+        <RowContainer>
           <DateInput title="Data (DD/MM/AAAA)" />
           <DateInput title="Hora" />
-        </DateHourContainer>
+        </RowContainer>
 
         <QuestionText>Está dentro da dieta?</QuestionText>
+
+        <RowContainer>
+          <CheckDietButton textButton="Sim" />
+          <CheckDietButton textButton="Não" />
+        </RowContainer>
       </Container>
 
       <Button

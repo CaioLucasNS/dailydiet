@@ -9,7 +9,7 @@ export const Container = styled.View`
   width: 100%;
 `;
 
-export const DateHourContainer = styled.View`
+export const RowContainer = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
