@@ -2,10 +2,24 @@ import { Button } from "@components/Button";
 import { CheckDietButton } from "@components/CheckDietButton";
 import { DateInput } from "@components/DateInput";
 import { InputComponent } from "@components/InputComponent";
+import { useState } from "react";
 
 import { Container, RowContainer, QuestionText } from "./styles";
 
 export function NewMeal() {
+  const [yesButtonChecked, setYesButtonChecked] = useState(false);
+  const [noButtonChecked, setNoButtonChecked] = useState(false);
+
+  const handlePressYes = () => {
+    setYesButtonChecked(yesButtonChecked ? false : true);
+    setNoButtonChecked(false);
+  };
+
+  const handlePressNo = () => {
+    setNoButtonChecked(noButtonChecked ? false : true);
+    setYesButtonChecked(false);
+  };
+
   return (
     <>
       <Container>
@@ -20,8 +34,16 @@ export function NewMeal() {
         <QuestionText>Está dentro da dieta?</QuestionText>
 
         <RowContainer>
-          <CheckDietButton textButton="Sim" />
-          <CheckDietButton textButton="Não" />
+          <CheckDietButton
+            textButton="Sim"
+            isChecked={yesButtonChecked}
+            onPress={handlePressYes}
+          />
+          <CheckDietButton
+            textButton="Não"
+            isChecked={noButtonChecked}
+            onPress={handlePressNo}
+          />
         </RowContainer>
       </Container>
 
