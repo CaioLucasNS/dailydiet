@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 
+import { AvatarHeader } from "@components/AvatarHeader";
 import { Button } from "@components/Button";
 import { DietPercentageCard } from "@components/DietPercentageCard";
-import { Header } from "@components/Header";
 import { MealList } from "@components/MealList";
 
 import { Container, MealTitle } from "./styles";
@@ -14,7 +14,7 @@ export function Home() {
 
   return (
     <Container>
-      <Header />
+      <AvatarHeader />
 
       <DietPercentageCard
         percentage={percentageMock}

@@ -2,11 +2,20 @@ import styled, { css } from "styled-components/native";
 
 export const Container = styled.View`
   flex: 1;
+  background: ${({ theme }) => theme.COLORS.GRAY_7};
+`;
+
+export const Content = styled.View`
+  flex: 1;
   background-color: ${({ theme }) => theme.COLORS.GRAY_7};
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   padding-horizontal: 24px;
+  padding-top: 40px;
   width: 100%;
+
+  border-radius: 20px;
+  margin-top: -20px;
 `;
 
 export const RowContainer = styled.View`

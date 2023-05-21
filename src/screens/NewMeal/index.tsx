@@ -1,10 +1,13 @@
 import { Button } from "@components/Button";
 import { CheckDietButton } from "@components/CheckDietButton";
 import { DateInput } from "@components/DateInput";
+import { GoBackIcon } from "@components/GoBackIcon";
+import { HeaderComponent } from "@components/HeaderComponent";
 import { InputComponent } from "@components/InputComponent";
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 
-import { Container, RowContainer, QuestionText } from "./styles";
+import { Container, RowContainer, QuestionText, Content } from "./styles";
 
 export function NewMeal() {
   const [yesButtonChecked, setYesButtonChecked] = useState(false);
@@ -21,8 +24,10 @@ export function NewMeal() {
   };
 
   return (
-    <>
-      <Container>
+    <Container>
+      <HeaderComponent title="Nova refeição" />
+
+      <Content>
         <InputComponent title="Nome" />
         <InputComponent title="Descrição" isTextArea />
 
@@ -45,13 +50,12 @@ export function NewMeal() {
             onPress={handlePressNo}
           />
         </RowContainer>
-      </Container>
-
+      </Content>
       <Button
         title="Cadastrar refeição"
         style={{ marginHorizontal: 24 }}
         onPress={() => console.log("Cadastrar refeição")}
       />
-    </>
+    </Container>
   );
 }
