@@ -6,6 +6,9 @@ export declare global {
         percentage: number;
       };
       NewMeal: undefined;
+      NewMealFeedback: {
+        onDiet: boolean | null;
+      };
     }
   }
 }

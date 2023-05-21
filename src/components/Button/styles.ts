@@ -6,13 +6,16 @@ export type ButtonIconTypeStyleProps = "primary" | "secondary";
 
 type Props = {
   type: ButtonIconTypeStyleProps;
+  disabled?: boolean;
 };
 
 export const Container = styled(TouchableOpacity)<Props>`
-  ${({ theme, type }) =>
+  ${({ theme, type, disabled }) =>
     css`
       border-width: ${type === "primary" ? 0 : 1}px;
-      background-color: ${type === "primary"
+      background-color: ${disabled
+        ? theme.COLORS.GRAY_5
+        : type === "primary"
         ? theme.COLORS.GRAY_2
         : theme.COLORS.GRAY_7};
     `}
