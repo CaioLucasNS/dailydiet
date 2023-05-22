@@ -5,6 +5,7 @@ import { HeaderComponent } from "@components/HeaderComponent";
 import { InputComponent } from "@components/InputComponent";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
+import { KeyboardAvoidingView, Platform } from "react-native";
 
 import { Container, RowContainer, QuestionText, Content } from "./styles";
 
@@ -35,39 +36,45 @@ export function NewMealForm() {
   };
 
   return (
-    <Container>
-      <HeaderComponent title="Nova refeição" />
+    <KeyboardAvoidingView
+      enabled
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+    >
+      <Container>
+        <HeaderComponent title="Nova refeição" />
 
-      <Content>
-        <InputComponent title="Nome" />
-        <InputComponent title="Descrição" isTextArea />
+        <Content>
+          <InputComponent title="Nome" placeholder="Nome da refeição" />
+          <InputComponent title="Descrição" isTextArea />
 
-        <RowContainer>
-          <DateInput title="Data (DD/MM/AAAA)" />
-          <DateInput title="Hora" />
-        </RowContainer>
+          <RowContainer>
+            <DateInput title="Data (DD/MM/AAAA)" placeholder="Data" />
+            <DateInput title="Hora" placeholder="Hora" />
+          </RowContainer>
 
-        <QuestionText>Está dentro da dieta?</QuestionText>
+          <QuestionText>Está dentro da dieta?</QuestionText>
 
-        <RowContainer>
-          <CheckDietButton
-            textButton="Sim"
-            isChecked={yesButtonChecked}
-            onPress={handlePressYes}
-          />
-          <CheckDietButton
-            textButton="Não"
-            isChecked={noButtonChecked}
-            onPress={handlePressNo}
-          />
-        </RowContainer>
-      </Content>
-      <Button
-        title="Cadastrar refeição"
-        style={{ marginHorizontal: 24, marginBottom: 40 }}
-        onPress={handleSubmit}
-        disabled={onDiet === null}
-      />
-    </Container>
+          <RowContainer>
+            <CheckDietButton
+              textButton="Sim"
+              isChecked={yesButtonChecked}
+              onPress={handlePressYes}
+            />
+            <CheckDietButton
+              textButton="Não"
+              isChecked={noButtonChecked}
+              onPress={handlePressNo}
+            />
+          </RowContainer>
+        </Content>
+        <Button
+          title="Cadastrar refeição"
+          style={{ marginHorizontal: 24, marginBottom: 40 }}
+          onPress={handleSubmit}
+          disabled={onDiet === null}
+        />
+      </Container>
+    </KeyboardAvoidingView>
   );
 }
