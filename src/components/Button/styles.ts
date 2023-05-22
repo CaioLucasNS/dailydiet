@@ -27,7 +27,6 @@ export const Container = styled(TouchableOpacity)<Props>`
   border-radius: 6px;
 
   margin-top: 6px;
-  margin-bottom: 32px;
 `;
 
 export const PlusIcon = styled(Plus).attrs<Props>(() => ({

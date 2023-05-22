@@ -9,6 +9,13 @@ export declare global {
       NewMealFeedback: {
         onDiet: boolean | null;
       };
+      MealDetails: {
+        day: string;
+        time: string;
+        meal: string;
+        description: string;
+        onDiet: boolean;
+      };
     }
   }
 }

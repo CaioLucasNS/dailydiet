@@ -15,7 +15,7 @@ export const ListItemTitle = styled.Text`
   margin-top: 10px;
 `;
 
-export const ListItemContainer = styled.View`
+export const ListItemContainer = styled.TouchableOpacity`
   border-width: 1px;
   border-radius: 6px;
   border-color: ${({ theme }) => theme.COLORS.GRAY_5};

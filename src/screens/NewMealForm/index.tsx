@@ -64,7 +64,7 @@ export function NewMealForm() {
       </Content>
       <Button
         title="Cadastrar refeição"
-        style={{ marginHorizontal: 24 }}
+        style={{ marginHorizontal: 24, marginBottom: 40 }}
         onPress={handleSubmit}
         disabled={onDiet === null}
       />
