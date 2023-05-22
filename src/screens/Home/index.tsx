@@ -1,4 +1,8 @@
+import { useCallback, useState } from "react";
+import { Alert } from "react-native";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
+
+import { mealGetAll } from "@storage/meal/mealGetAll";
 
 import { AvatarHeader } from "@components/AvatarHeader";
 import { Button } from "@components/Button";
@@ -6,14 +10,12 @@ import { DietPercentageCard } from "@components/DietPercentageCard";
 import { MealList } from "@components/MealList";
 
 import { Container, MealTitle } from "./styles";
-import { useCallback, useEffect, useState } from "react";
-import { mealGetAll } from "@storage/meal/mealGetAll";
+
 import { MealDTO } from "src/types/MealDTO";
-import { Alert } from "react-native";
 
 export function Home() {
   const [mealsData, setMealsData] = useState<MealDTO[]>([]);
-  // console.log("mealsData: ", JSON.stringify(mealsData));
+
   const navigation = useNavigation();
 
   const percentageMock = 51.32;
@@ -21,6 +23,8 @@ export function Home() {
   const fetchMeals = async () => {
     try {
       const data = await mealGetAll();
+
+      // TODO: organizar por data descrescente
       setMealsData(data);
     } catch (error) {
       Alert.alert("Refeições", "Não foi possível carregar as suas refeições");
