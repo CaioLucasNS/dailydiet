@@ -4539,6 +4539,11 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+mask-js@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/mask-js/-/mask-js-2.1.0.tgz#1381be4a0ecae30da48c14cae1a03111546642ec"
+  integrity sha512-NFJMVnDyMXrITSnfH1E/JYtDm6fYgcvNERUc6l/CCE8dlINwuu0Kwh9CRshZ99dwioDviTfaQluYPOjZO7o1yg==
+
 md5-file@^3.2.3:
   version "3.2.3"
   resolved "https://registry.npmjs.org/md5-file/-/md5-file-3.2.3.tgz"

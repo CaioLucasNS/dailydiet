@@ -17,16 +17,16 @@ import {
 } from "./styles";
 
 type RouteParams = {
-  day: string;
-  time: string;
-  meal: string;
+  date: string;
+  hour: string;
+  mealName: string;
   description: string;
   onDiet: boolean;
 };
 
 export function MealDetails() {
   const { params } = useRoute();
-  const { day, time, meal, description, onDiet } = params as RouteParams;
+  const { date, hour, mealName, description, onDiet } = params as RouteParams;
   const { COLORS } = useTheme();
 
   const handleDeleteMeal = () => {
@@ -48,12 +48,12 @@ export function MealDetails() {
       />
 
       <Content>
-        <Title>{meal}</Title>
+        <Title>{mealName}</Title>
         <Description>{description}</Description>
 
         <TimeTitle>Data e hora</TimeTitle>
         <TimeText>
-          {day} às {time}
+          {date} às {hour}
         </TimeText>
 
         <StatusContainer>

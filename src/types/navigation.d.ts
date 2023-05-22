@@ -10,9 +10,9 @@ export declare global {
         onDiet: boolean | null;
       };
       MealDetails: {
-        day: string;
-        time: string;
-        meal: string;
+        date: string;
+        hour: string;
+        mealName: string;
         description: string;
         onDiet: boolean;
       };

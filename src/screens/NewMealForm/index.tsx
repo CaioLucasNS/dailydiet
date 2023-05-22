@@ -4,6 +4,7 @@ import { DateInput } from "@components/DateInput";
 import { HeaderComponent } from "@components/HeaderComponent";
 import { InputComponent } from "@components/InputComponent";
 import { useNavigation } from "@react-navigation/native";
+import { mealCreate } from "@storage/meal/mealCreate";
 import { useState } from "react";
 import { KeyboardAvoidingView, Platform } from "react-native";
 
@@ -13,6 +14,10 @@ export function NewMealForm() {
   const [yesButtonChecked, setYesButtonChecked] = useState(false);
   const [noButtonChecked, setNoButtonChecked] = useState(false);
 
+  const [mealName, setMealName] = useState("");
+  const [description, setDescription] = useState("");
+  const [date, setDate] = useState("");
+  const [hour, setHour] = useState("");
   const [onDiet, setOnDiet] = useState<boolean | null>(null);
 
   const navigation = useNavigation();
@@ -31,8 +36,19 @@ export function NewMealForm() {
     setOnDiet((prevState) => (prevState === false ? null : false));
   };
 
-  const handleSubmit = () => {
-    navigation.navigate("NewMealFeedback", { onDiet });
+  const handleSubmit = async () => {
+    try {
+      const mealDto = {
+        date,
+        data: [{ mealName, description, hour, onDiet }],
+      };
+
+      await mealCreate(mealDto);
+
+      navigation.navigate("NewMealFeedback", { onDiet });
+    } catch (error) {
+      throw error;
+    }
   };
 
   return (
@@ -45,12 +61,34 @@ export function NewMealForm() {
         <HeaderComponent title="Nova refeição" />
 
         <Content>
-          <InputComponent title="Nome" placeholder="Nome da refeição" />
-          <InputComponent title="Descrição" isTextArea />
+          <InputComponent
+            title="Nome"
+            placeholder="Nome da refeição"
+            value={mealName}
+            onChangeText={setMealName}
+          />
+          <InputComponent
+            title="Descrição"
+            isTextArea
+            value={description}
+            onChangeText={setDescription}
+          />
 
           <RowContainer>
-            <DateInput title="Data (DD/MM/AAAA)" placeholder="Data" />
-            <DateInput title="Hora" placeholder="Hora" />
+            <DateInput
+              onChangeText={setDate}
+              placeholder="DD/MM/AAAA"
+              title="Data"
+              type="date"
+              value={date}
+            />
+            <DateInput
+              onChangeText={setHour}
+              placeholder="HH:mm"
+              title="Hora"
+              type="hour"
+              value={hour}
+            />
           </RowContainer>
 
           <QuestionText>Está dentro da dieta?</QuestionText>
