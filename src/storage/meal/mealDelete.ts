@@ -15,10 +15,12 @@ export async function mealDelete(deletedMeal: MealInfoTypes) {
       return { ...storedMeal, data: filteredData };
     });
 
-    await AsyncStorage.setItem(
+    const storage = await AsyncStorage.setItem(
       `${MEAL_COLLECTION}`,
       JSON.stringify(newStorage)
     );
+
+    return storage;
   } catch (error) {
     throw error;
   }

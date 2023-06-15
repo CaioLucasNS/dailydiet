@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Alert, SectionList, View } from "react-native";
+import { Alert } from "react-native";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
 import { mealGetAll } from "@storage/meal/mealGetAll";
@@ -9,22 +9,12 @@ import { Button } from "@components/Button";
 import { DietPercentageCard } from "@components/DietPercentageCard";
 import { MealList } from "@components/MealList";
 
-import {
-  Container,
-  Divider,
-  ListItemContainer,
-  ListItemTitle,
-  MealStatus,
-  MealTime,
-  MealTitle,
-} from "./styles";
+import { Container, MealTitle } from "./styles";
 
 import { MealDTO } from "src/types/MealDTO";
-import { personalizeConsole } from "@utils/index";
 
 export function Home() {
   const [mealsData, setMealsData] = useState<MealDTO[]>([]);
-  personalizeConsole("mealsData", mealsData);
 
   const navigation = useNavigation();
 

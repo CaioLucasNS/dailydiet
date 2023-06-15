@@ -43,8 +43,8 @@ export function MealDetails() {
       },
       {
         text: "Sim, excluir",
-        onPress: () => {
-          mealDelete(meal);
+        onPress: async () => {
+          await mealDelete(meal);
           return navigation.navigate("Home");
         },
       },
