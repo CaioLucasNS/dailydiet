@@ -40,7 +40,7 @@ export function NewMealForm() {
     try {
       const mealDto = {
         date,
-        data: [{ mealName, description, hour, onDiet }],
+        data: [{ mealName, description, hour, onDiet, date }],
       };
 
       await mealCreate(mealDto);

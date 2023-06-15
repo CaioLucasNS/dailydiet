@@ -10,48 +10,6 @@ import {
   MealTitle,
 } from "./styles";
 
-const mockData: MealDTO[] = [
-  {
-    date: "08.05.23",
-    data: [
-      {
-        hour: "10:00",
-        mealName: "Hamburger",
-        description: "test",
-        onDiet: true,
-      },
-      { hour: "12:30", mealName: "Sushi", description: "test", onDiet: false },
-      { hour: "15:00", mealName: "Pizza", description: "test", onDiet: false },
-    ],
-  },
-  {
-    date: "09.05.23",
-    data: [
-      { hour: "11:00", mealName: "Granola", description: "test", onDiet: true },
-      {
-        hour: "13:30",
-        mealName: "Batata doce",
-        description: "test",
-        onDiet: true,
-      },
-      { hour: "16:00", mealName: "Frango", description: "test", onDiet: true },
-    ],
-  },
-  {
-    date: "10.05.23",
-    data: [
-      { hour: "11:00", mealName: "Uva", description: "test", onDiet: true },
-      {
-        hour: "13:30",
-        mealName: "Batata doce",
-        description: "test",
-        onDiet: true,
-      },
-      { hour: "16:00", mealName: "Maçã", description: "test", onDiet: true },
-    ],
-  },
-];
-
 type Props = {
   data: MealDTO[];
 };
@@ -68,6 +26,7 @@ export function MealList({ data }: Props) {
           <ListItemContainer
             onPress={() =>
               navigation.navigate("MealDetails", {
+                meal: item,
                 date: section.date,
                 hour: item.hour,
                 mealName: item.mealName,
@@ -84,7 +43,7 @@ export function MealList({ data }: Props) {
           </ListItemContainer>
         )}
         renderSectionHeader={({ section }) => (
-          <ListItemTitle>{section.date}</ListItemTitle>
+          <ListItemTitle>{section.data[0].date}</ListItemTitle>
         )}
         ItemSeparatorComponent={() => <View style={{ height: 6 }} />}
         SectionSeparatorComponent={() => <View style={{ height: 10 }} />}

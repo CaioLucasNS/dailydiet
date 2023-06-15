@@ -1,3 +1,5 @@
+import { MealDTO } from "./MealDTO";
+
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
@@ -10,6 +12,7 @@ export declare global {
         onDiet: boolean | null;
       };
       MealDetails: {
+        meal: any;
         date: string;
         hour: string;
         mealName: string;

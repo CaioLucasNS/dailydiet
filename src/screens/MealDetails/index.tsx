@@ -1,6 +1,7 @@
 import { Button } from "@components/Button";
 import { HeaderComponent } from "@components/HeaderComponent";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { mealDelete } from "@storage/meal/mealDelete";
 import { Alert } from "react-native";
 import { useTheme } from "styled-components/native";
 import {
@@ -17,6 +18,7 @@ import {
 } from "./styles";
 
 type RouteParams = {
+  meal: any;
   date: string;
   hour: string;
   mealName: string;
@@ -26,7 +28,10 @@ type RouteParams = {
 
 export function MealDetails() {
   const { params } = useRoute();
-  const { date, hour, mealName, description, onDiet } = params as RouteParams;
+  const navigation = useNavigation();
+  const { date, hour, mealName, description, onDiet, meal } =
+    params as RouteParams;
+
   const { COLORS } = useTheme();
 
   const handleDeleteMeal = () => {
@@ -36,7 +41,13 @@ export function MealDetails() {
         onPress: () => console.log("cancelado"),
         style: "cancel",
       },
-      { text: "Sim, excluir", onPress: () => console.log("OK Pressed") },
+      {
+        text: "Sim, excluir",
+        onPress: () => {
+          mealDelete(meal);
+          return navigation.navigate("Home");
+        },
+      },
     ]);
   };
 
