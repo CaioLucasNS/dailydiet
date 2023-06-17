@@ -15,10 +15,15 @@ import { MealDTO } from "src/types/MealDTO";
 
 export function Home() {
   const [mealsData, setMealsData] = useState<MealDTO[]>([]);
+  const [dietInfo, setDietInfo] = useState({
+    percentOnDiet: 0,
+    // onDietSequency: 0,
+    registeredMeals: 0,
+    onTheDiet: 0,
+    outDiet: 0,
+  });
 
   const navigation = useNavigation();
-
-  const percentageMock = 51.32;
 
   const fetchMeals = async () => {
     try {
@@ -37,6 +42,30 @@ export function Home() {
         );
 
         return dateB.getTime() - dateA.getTime();
+      });
+
+      let registeredMeals: any[] = [];
+      let onTheDiet = 0;
+      let outDiet = 0;
+      dataSortered.forEach((obj) => {
+        obj.data.forEach((meal) => {
+          if (meal.onDiet) {
+            onTheDiet += 1;
+          } else {
+            outDiet += 1;
+          }
+          registeredMeals.push(meal.onDiet);
+        });
+      });
+
+      let percentOnDiet = (100 * onTheDiet) / registeredMeals.length;
+
+      setDietInfo({
+        percentOnDiet,
+        // onDietSequency: 0,
+        registeredMeals: registeredMeals.length,
+        onTheDiet: onTheDiet,
+        outDiet: outDiet,
       });
 
       setMealsData(dataSortered);
@@ -69,9 +98,15 @@ export function Home() {
       <AvatarHeader />
 
       <DietPercentageCard
-        percentage={percentageMock}
+        percentage={dietInfo.percentOnDiet}
         onPress={() =>
-          navigation.navigate("Statistics", { percentage: percentageMock })
+          navigation.navigate("Statistics", {
+            percentOnDiet: dietInfo.percentOnDiet,
+            // onDietSequency: 0,
+            registeredMeals: dietInfo.registeredMeals,
+            onTheDiet: dietInfo.onTheDiet,
+            outDiet: dietInfo.outDiet,
+          })
         }
       />
 

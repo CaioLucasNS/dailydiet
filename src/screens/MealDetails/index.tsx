@@ -75,7 +75,7 @@ export function MealDetails() {
         </StatusContainer>
       </Content>
       <ButtonsContainer>
-        <Button title="Editar refeição" icon="edit" onPress={() => {}} />
+        {/* <Button title="Editar refeição" icon="edit" onPress={() => {}} /> */}
         <Button
           title="Excluir refeição"
           icon="delete"

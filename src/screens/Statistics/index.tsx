@@ -16,22 +16,27 @@ import {
 } from "./styles";
 
 type RouteParams = {
-  percentage: number;
+  percentOnDiet: number;
+  onDietSequency?: number;
+  registeredMeals: number;
+  onTheDiet: number;
+  outDiet: number;
 };
 
 export function Statistics() {
   const navigation = useNavigation();
   const routes = useRoute();
-  const { percentage } = routes.params as RouteParams;
+  const { percentOnDiet, registeredMeals, onTheDiet, outDiet } =
+    routes.params as RouteParams;
 
   return (
     <Container>
-      <Header percentage={percentage}>
+      <Header percentage={percentOnDiet}>
         <GoBackArrowContainer onPress={() => navigation.goBack()}>
           <GoBackArrow />
         </GoBackArrowContainer>
 
-        <PercentageText>{percentage}%</PercentageText>
+        <PercentageText>{percentOnDiet}%</PercentageText>
         <DescriptionText>das refeições dentro da dieta</DescriptionText>
       </Header>
 
@@ -39,12 +44,12 @@ export function Statistics() {
         <ContentTitle>Estatísticas gerais</ContentTitle>
 
         <CardsContainer>
-          <LargeCardComponent
+          {/* <LargeCardComponent
             cardNumber={22}
             cardDescription="melhor sequência de pratos dentro da dieta"
-          />
+          /> */}
           <LargeCardComponent
-            cardNumber={109}
+            cardNumber={registeredMeals}
             cardDescription="refeições registradas"
           />
 
@@ -52,11 +57,11 @@ export function Statistics() {
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
             <SmallCardComponent
-              cardNumber={99}
+              cardNumber={onTheDiet}
               cardDescription="refeições dentro da dieta"
             />
             <SmallCardComponent
-              cardNumber={10}
+              cardNumber={outDiet}
               cardDescription="refeições fora da dieta"
               isOffTheDiet
             />
