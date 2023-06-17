@@ -24,8 +24,22 @@ export function Home() {
     try {
       const data = await mealGetAll();
 
-      // TODO: organizar por data descrescente
-      setMealsData(data);
+      const dataSortered = data.sort((a, b) => {
+        // update string date in new Date to sort
+        const datePartsA = a.date.split("/");
+        const dateA = new Date(
+          `${datePartsA[2]}-${datePartsA[1]}-${datePartsA[0]}`
+        );
+
+        const datePartsB = b.date.split("/");
+        const dateB = new Date(
+          `${datePartsB[2]}-${datePartsB[1]}-${datePartsB[0]}`
+        );
+
+        return dateB.getTime() - dateA.getTime();
+      });
+
+      setMealsData(dataSortered);
     } catch (error) {
       Alert.alert("Refeições", "Não foi possível carregar as suas refeições");
       console.log("error: ", error);
