@@ -14,7 +14,7 @@ import { Container, MealTitle } from "./styles";
 import { MealDTO } from "src/types/MealDTO";
 
 type DietInfoTypes = {
-  percentOnDiet: number | string;
+  percentOnDiet: number;
   // onDietSequency:number,
   registeredMeals: number;
   onTheDiet: number;
@@ -69,7 +69,7 @@ export function Home() {
       let percentOnDiet = (100 * onTheDiet) / registeredMeals.length;
 
       setDietInfo({
-        percentOnDiet: percentOnDiet.toFixed(2),
+        percentOnDiet: +percentOnDiet.toFixed(2),
         // onDietSequency: 0,
         registeredMeals: registeredMeals.length,
         onTheDiet: onTheDiet,
