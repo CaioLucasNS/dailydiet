@@ -13,9 +13,17 @@ import { Container, MealTitle } from "./styles";
 
 import { MealDTO } from "src/types/MealDTO";
 
+type DietInfoTypes = {
+  percentOnDiet: number | string;
+  // onDietSequency:number,
+  registeredMeals: number;
+  onTheDiet: number;
+  outDiet: number;
+};
+
 export function Home() {
   const [mealsData, setMealsData] = useState<MealDTO[]>([]);
-  const [dietInfo, setDietInfo] = useState({
+  const [dietInfo, setDietInfo] = useState<DietInfoTypes>({
     percentOnDiet: 0,
     // onDietSequency: 0,
     registeredMeals: 0,
@@ -61,7 +69,7 @@ export function Home() {
       let percentOnDiet = (100 * onTheDiet) / registeredMeals.length;
 
       setDietInfo({
-        percentOnDiet,
+        percentOnDiet: percentOnDiet.toFixed(2),
         // onDietSequency: 0,
         registeredMeals: registeredMeals.length,
         onTheDiet: onTheDiet,
