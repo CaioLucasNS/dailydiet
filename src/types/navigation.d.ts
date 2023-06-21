@@ -11,7 +11,7 @@ export declare global {
         onTheDiet: number;
         outDiet: number;
       };
-      NewMeal: undefined;
+      NewMealForm: undefined;
       NewMealFeedback: {
         onDiet: boolean | null;
       };
