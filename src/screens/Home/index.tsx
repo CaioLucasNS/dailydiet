@@ -116,15 +116,15 @@ export function Home() {
   );
 
   // To delete everything
-  const handleDeleteAll = async () => {
-    try {
-      const response = await AsyncStorage.clear();
-      console.log("response: ", response);
-      return response;
-    } catch (error) {
-      throw error;
-    }
-  };
+  // const handleDeleteAll = async () => {
+  //   try {
+  //     const response = await AsyncStorage.clear();
+  //     console.log("response: ", response);
+  //     return response;
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // };
 
   return (
     <Container>
@@ -147,8 +147,7 @@ export function Home() {
       <Button
         title="Nova refeição"
         icon="add"
-        onPress={() => navigation.navigate("NewMeal")}
-        // onPress={handleDeleteAll}
+        onPress={() => navigation.navigate("NewMealForm")}
         style={{ marginBottom: 32 }}
       />
 
