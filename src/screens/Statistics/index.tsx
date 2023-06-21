@@ -17,7 +17,7 @@ import {
 
 type RouteParams = {
   percentOnDiet: number;
-  onDietSequency?: number;
+  onDietSequency: number;
   registeredMeals: number;
   onTheDiet: number;
   outDiet: number;
@@ -26,7 +26,7 @@ type RouteParams = {
 export function Statistics() {
   const navigation = useNavigation();
   const routes = useRoute();
-  const { percentOnDiet, registeredMeals, onTheDiet, outDiet } =
+  const { percentOnDiet, onDietSequency, registeredMeals, onTheDiet, outDiet } =
     routes.params as RouteParams;
 
   return (
@@ -44,10 +44,10 @@ export function Statistics() {
         <ContentTitle>Estatísticas gerais</ContentTitle>
 
         <CardsContainer>
-          {/* <LargeCardComponent
-            cardNumber={22}
+          <LargeCardComponent
+            cardNumber={onDietSequency}
             cardDescription="melhor sequência de pratos dentro da dieta"
-          /> */}
+          />
           <LargeCardComponent
             cardNumber={registeredMeals}
             cardDescription="refeições registradas"

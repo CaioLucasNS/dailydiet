@@ -14,10 +14,9 @@ import { Container, MealTitle } from "./styles";
 import { MealDTO } from "src/types/MealDTO";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
 type DietInfoTypes = {
   percentOnDiet: number;
-  onDietSequency?: number;
+  onDietSequency: number;
   registeredMeals: number;
   onTheDiet: number;
   outDiet: number;
@@ -27,13 +26,35 @@ export function Home() {
   const [mealsData, setMealsData] = useState<MealDTO[]>([]);
   const [dietInfo, setDietInfo] = useState<DietInfoTypes>({
     percentOnDiet: 0,
-    // onDietSequency: 0,
+    onDietSequency: 0,
     registeredMeals: 0,
     onTheDiet: 0,
     outDiet: 0,
   });
 
   const navigation = useNavigation();
+
+  const calculateOnDietSequency = (array: MealDTO[]) => {
+    let maxContador = 0;
+    let contador = 0;
+
+    for (let i = 0; i < array.length; i++) {
+      const data = array[i].data;
+
+      for (let j = 0; j < data.length; j++) {
+        if (data[j].onDiet) {
+          contador++;
+          if (contador > maxContador) {
+            maxContador = contador;
+          }
+        } else {
+          contador = 0;
+        }
+      }
+    }
+
+    return maxContador;
+  };
 
   const fetchMeals = async () => {
     try {
@@ -70,9 +91,11 @@ export function Home() {
 
       let percentOnDiet = (100 * onTheDiet) / registeredMeals.length;
 
+      const onDietSequency = calculateOnDietSequency(dataSortered);
+
       setDietInfo({
         percentOnDiet: +percentOnDiet.toFixed(2) || 0,
-        // onDietSequency: 0,
+        onDietSequency,
         registeredMeals: registeredMeals.length,
         onTheDiet: onTheDiet,
         outDiet: outDiet,
@@ -112,7 +135,7 @@ export function Home() {
         onPress={() =>
           navigation.navigate("Statistics", {
             percentOnDiet: dietInfo.percentOnDiet,
-            // onDietSequency: 0,
+            onDietSequency: dietInfo.onDietSequency,
             registeredMeals: dietInfo.registeredMeals,
             onTheDiet: dietInfo.onTheDiet,
             outDiet: dietInfo.outDiet,

@@ -6,7 +6,7 @@ export declare global {
       Home: undefined;
       Statistics: {
         percentOnDiet: number;
-        onDietSequency?: number;
+        onDietSequency: number;
         registeredMeals: number;
         onTheDiet: number;
         outDiet: number;
