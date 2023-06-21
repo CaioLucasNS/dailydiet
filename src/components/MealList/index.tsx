@@ -42,8 +42,8 @@ export function MealList({ data }: Props) {
             <MealStatus onDiet={!!item.onDiet} />
           </ListItemContainer>
         )}
-        renderSectionHeader={({ section }) => (
-          <ListItemTitle>{section.data[0].date}</ListItemTitle>
+        renderSectionHeader={({ section }) => ( 
+          <ListItemTitle>{section.date}</ListItemTitle>
         )}
         ItemSeparatorComponent={() => <View style={{ height: 6 }} />}
         SectionSeparatorComponent={() => <View style={{ height: 10 }} />}

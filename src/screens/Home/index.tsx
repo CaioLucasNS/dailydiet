@@ -12,10 +12,12 @@ import { MealList } from "@components/MealList";
 import { Container, MealTitle } from "./styles";
 
 import { MealDTO } from "src/types/MealDTO";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 type DietInfoTypes = {
   percentOnDiet: number;
-  // onDietSequency:number,
+  onDietSequency?: number;
   registeredMeals: number;
   onTheDiet: number;
   outDiet: number;
@@ -69,7 +71,7 @@ export function Home() {
       let percentOnDiet = (100 * onTheDiet) / registeredMeals.length;
 
       setDietInfo({
-        percentOnDiet: +percentOnDiet.toFixed(2),
+        percentOnDiet: +percentOnDiet.toFixed(2) || 0,
         // onDietSequency: 0,
         registeredMeals: registeredMeals.length,
         onTheDiet: onTheDiet,
@@ -91,15 +93,15 @@ export function Home() {
   );
 
   // To delete everything
-  // const handleDeleteAll = async () => {
-  //   try {
-  //     const response = await AsyncStorage.clear();
-  //     console.log("response: ", response);
-  //     return response;
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // };
+  const handleDeleteAll = async () => {
+    try {
+      const response = await AsyncStorage.clear();
+      console.log("response: ", response);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  };
 
   return (
     <Container>
@@ -123,6 +125,7 @@ export function Home() {
         title="Nova refeição"
         icon="add"
         onPress={() => navigation.navigate("NewMeal")}
+        // onPress={handleDeleteAll}
         style={{ marginBottom: 32 }}
       />
 

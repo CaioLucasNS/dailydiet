@@ -15,9 +15,11 @@ export async function mealDelete(deletedMeal: MealInfoTypes) {
       return { ...storedMeal, data: filteredData };
     });
 
+    const hasMealVerify = newStorage.filter((item) => item.data.length > 0);
+
     const storage = await AsyncStorage.setItem(
       `${MEAL_COLLECTION}`,
-      JSON.stringify(newStorage)
+      JSON.stringify(hasMealVerify)
     );
 
     return storage;
