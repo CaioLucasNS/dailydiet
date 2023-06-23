@@ -6,7 +6,7 @@ import { InputComponent } from "@components/InputComponent";
 import { useNavigation } from "@react-navigation/native";
 import { mealCreate } from "@storage/meal/mealCreate";
 import { useState } from "react";
-import { KeyboardAvoidingView, Platform } from "react-native";
+import { Keyboard, TouchableWithoutFeedback } from "react-native";
 
 import { Container, RowContainer, QuestionText, Content } from "./styles";
 
@@ -27,6 +27,7 @@ export function NewMealForm() {
     setNoButtonChecked(false);
 
     setOnDiet((prevState) => (!prevState ? true : null));
+    Keyboard.dismiss();
   };
 
   const handlePressNo = () => {
@@ -34,6 +35,7 @@ export function NewMealForm() {
     setYesButtonChecked(false);
 
     setOnDiet((prevState) => (prevState === false ? null : false));
+    Keyboard.dismiss();
   };
 
   const handleSubmit = async () => {
@@ -52,11 +54,7 @@ export function NewMealForm() {
   };
 
   return (
-    <KeyboardAvoidingView
-      enabled
-      style={{ flex: 1 }}
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
-    >
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <Container>
         <HeaderComponent title="Nova refeição" />
 
@@ -66,6 +64,7 @@ export function NewMealForm() {
             placeholder="Nome da refeição"
             value={mealName}
             onChangeText={setMealName}
+            returnKeyType="next"
           />
           <InputComponent
             title="Descrição"
@@ -113,6 +112,6 @@ export function NewMealForm() {
           disabled={onDiet === null}
         />
       </Container>
-    </KeyboardAvoidingView>
+    </TouchableWithoutFeedback>
   );
 }
