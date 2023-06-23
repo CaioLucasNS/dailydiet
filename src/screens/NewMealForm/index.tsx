@@ -6,7 +6,7 @@ import { InputComponent } from "@components/InputComponent";
 import { useNavigation } from "@react-navigation/native";
 import { mealCreate } from "@storage/meal/mealCreate";
 import { useState } from "react";
-import { Keyboard, TouchableWithoutFeedback } from "react-native";
+import { Keyboard, TouchableWithoutFeedback, View } from "react-native";
 
 import { Container, RowContainer, QuestionText, Content } from "./styles";
 
@@ -59,6 +59,7 @@ export function NewMealForm() {
         <HeaderComponent title="Nova refeição" />
 
         <Content>
+          <View style={{ width: '100%'}}>
           <InputComponent
             title="Nome"
             placeholder="Nome da refeição"
@@ -104,13 +105,14 @@ export function NewMealForm() {
               onPress={handlePressNo}
             />
           </RowContainer>
+          </View>
+          <Button
+            title="Cadastrar refeição"
+            style={{ marginBottom: 40, width: '100%' }}
+            onPress={handleSubmit}
+            disabled={onDiet === null}
+          />
         </Content>
-        <Button
-          title="Cadastrar refeição"
-          style={{ marginHorizontal: 24, marginBottom: 40 }}
-          onPress={handleSubmit}
-          disabled={onDiet === null}
-        />
       </Container>
     </TouchableWithoutFeedback>
   );

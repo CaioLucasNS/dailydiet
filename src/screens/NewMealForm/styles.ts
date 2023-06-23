@@ -8,7 +8,7 @@ export const Container = styled.View`
 export const Content = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.COLORS.GRAY_7};
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
   padding-horizontal: 24px;
   padding-top: 40px;
